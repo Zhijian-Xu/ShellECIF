@@ -13,18 +13,13 @@ Zhijian Xu, Shanghai Institute of Materia Medica, zjxu@simm.ac.cn
 
 Shaoliang Peng, Hunan University, slpeng@hnu.edu.cn
 
-## Citation
-
-todo
-
 ## Getting started
-Before running our code, create a [conda](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html "Getting started with conda") environment using the file `conda_env.yml`. To do so, open a terminal and run: ```conda env create -f conda_env.yml```
+Before running our code, create a [conda](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html "Getting started with conda") environment using the file `conda_env.yml`. To do so, open a terminal and run: ```conda env create -f conda_env.yml```.
 
 Or you can also use pip to install packages.
 
 ## Inference
-
-Unzip features.zip and run ```python inference_and_plot.py```
+Unzip features.zip and run ```python inference_and_plot.py```.
 
 ## In order to train model:
 
@@ -36,7 +31,10 @@ You can download CASF-2016, refined-set v2016, refined-set v2019, and general-se
 All ligands were processed using Standardizer, JChem 20.11.0, 2020, ChemAxon to add explicit hydrogen atoms (in case they were missing) and to perceive aromaticity in an interpretable way for RDKit. Replace the data directory in file `generate_features.py` and run ```python generate_features.py shellnum```, shellnum(default 23) is how many shells you want to generate.
 
 ### 3. Train via GradientBoostingRegressor.
-Change directory in file `get_features.py` and run ```python train_GBT.py```
+Change directory in file `get_features.py` and run ```python train_GBT.py```.
 
 ### 4. Predict the protein-ligand binding affinity.
-Specify your model_file and run ```python inference_and_plot.py```
+Specify your model_file and run ```python inference_and_plot.py```.
+
+## Citation
+todo
