@@ -1,4 +1,4 @@
-# Title
+# OnionECIF
 
 OnionECIF is a novel DTA prediction methodology that combines extended connectivity fingerprints with shell models to compute the extended connectivity fingerprints of drugs and proteins at varying shell layers to enable DTA prediction. This approach preserves the atomic environment information of drug targets, captures long and short-range interaction characteristics, and overcomes the challenge of conventional ECIF methods of failing to assess long-range interactions effectively. 
 
