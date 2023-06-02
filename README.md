@@ -1,6 +1,6 @@
-# OnionECIF
+# ShellECIF
 
-OnionECIF is a novel DTA prediction methodology that combines extended connectivity fingerprints with shell models to compute the extended connectivity fingerprints of drugs and proteins at varying shell layers to enable DTA prediction. This approach preserves the atomic environment information of drug targets, captures long and short-range interaction characteristics, and overcomes the challenge of conventional ECIF methods of failing to assess long-range interactions effectively. 
+ShellECIF is a novel DTA prediction methodology that combines extended connectivity fingerprints with shell models to compute the extended connectivity fingerprints of drugs and proteins at varying shell layers to enable DTA prediction. ShellECIF preserves the atomic environment information of drug targets, captures long and short-range interaction characteristics, and overcomes the challenge of conventional ECIF methods of failing to assess long-range interactions effectively. 
 
 Our experimental results exhibit that by extensively harnessing the benefits of extended connectivity fingerprints and shell models, it efficiently captures the interaction features of drugs and proteins on different spatial scales, leading to excellent performance, with a Pearson similarity index of 0.8722, RMSE of 1.164, MAE of 0.9308, and Spearman of 0.8747. This method outperforms current state-of-the-art methodologies, confirming its apparent advantages. Thus, this approach presents a reliable and effective solution for DTA prediction.
 ![Architecture](./pic/Architecture.png)

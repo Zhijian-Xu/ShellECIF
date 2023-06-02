@@ -14,14 +14,14 @@ FEATURE_LEN = 1540
 SHELLS = 23
 MAX_PCC = 0.87 # save model file when pcc_result greater than MAX_PCC
 
-def cut_onion(features, num=SHELLS):
-    # reshape onion 23 to num
+def cut_shell(features, num=SHELLS):
+    # reshape shell from 23 to num
     return features.reshape(-1, SHELLS, FEATURE_LEN)[:, :num, :].reshape(-1, num*FEATURE_LEN)
 
 def train_eval_GBT_model(parameter):
     learning_rate, iters, shells, max_depth, min_samples_split, subsample, max_f = parameter
     x_train, y_train, x_test, y_test = get_shell_features()
-    x_train, x_test = cut_onion(x_train, shells), cut_onion(x_test, shells)
+    x_train, x_test = cut_shell(x_train, shells), cut_shell(x_test, shells)
     GBT = GradientBoostingRegressor(
         random_state=1206, n_estimators=iters, max_features=max_f, 
         max_depth=max_depth, min_samples_split=min_samples_split, 
@@ -46,7 +46,7 @@ def train_eval_GBT_model(parameter):
     """)
 
     # save model
-    saved_path = f"./saved_GBT/OnionECIF_GBT_{pcc:.4f}_{rmse:.4f}_{iters}_{learning_rate}_{shells}_{max_depth}_{min_samples_split}_{subsample}_{max_f}.pkl"
+    saved_path = f"./saved_GBT/ShellECIF_GBT_{pcc:.4f}_{rmse:.4f}_{iters}_{learning_rate}_{shells}_{max_depth}_{min_samples_split}_{subsample}_{max_f}.pkl"
     if pcc > MAX_PCC: pickle.dump(GBT, open(saved_path, 'wb'))
 
 # search paramaters

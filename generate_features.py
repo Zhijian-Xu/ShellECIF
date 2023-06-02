@@ -123,7 +123,7 @@ def generate_single_ecif_feature(pdbid, distance_cutoff=6.0):
     feature = [list(Pairs["ECIF_PAIR"]).count(x) for x in PossibleECIF]
     return np.array(feature, dtype=np.float32), all_label_map[pdbid]
 
-def generate_onion_ecif_feature(pdbid, shells=SHELLS):
+def generate_shell_ecif_feature(pdbid, shells=SHELLS):
     if pdbid in test_ids:
         proteinfile = os.path.join(test_path, pdbid, f'{pdbid}_protein.pdb')
         ligandfile = os.path.join(test_path, pdbid, f'{pdbid}_ligand.sdf')
@@ -193,7 +193,7 @@ index = 0
 
 with multiprocessing.Pool(multiprocessing.cpu_count()) as workers:
     with tqdm(total=len(test_ids), ncols=80) as pbar:
-        for feature, label in workers.imap_unordered(generate_onion_ecif_feature, test_ids):
+        for feature, label in workers.imap_unordered(generate_shell_ecif_feature, test_ids):
             if feature is None or label is None:
                 print(f'catch {feature}, {label}')
                 continue
@@ -228,7 +228,7 @@ print('start featurize validation set...')
 
 with multiprocessing.Pool(multiprocessing.cpu_count()) as workers:
     with tqdm(total=len(validation_ids), ncols=80) as pbar:
-        for feature, label in workers.imap_unordered(generate_onion_ecif_feature, validation_ids):
+        for feature, label in workers.imap_unordered(generate_shell_ecif_feature, validation_ids):
             if feature is None or label is None:
                 print(f'catch {feature}, {label}')
                 continue
@@ -237,12 +237,12 @@ with multiprocessing.Pool(multiprocessing.cpu_count()) as workers:
             index += 1
             pbar.update()
 
-# print('save as validation_onionECIF_features.pkl')
+# print('save as validation_ShellECIF_features.pkl')
 print('save as validation_ECIF_features.pkl')
 with open(f'./features_shells_{SHELLS}/x_validation.pkl', 'wb') as f:
     pickle.dump(val_features[:index], f)
 
-# print('save as validation_onionECIF_labels.pkl')
+# print('save as validation_ShellECIF_labels.pkl')
 print('save as validation_ECIF_labels.pkl')
 with open(f'./features_shells_{SHELLS}/y_validation.pkl', 'wb') as f:
     pickle.dump(val_labels[:index], f)
@@ -266,7 +266,7 @@ print('start featurize training set...')
 
 with multiprocessing.Pool(multiprocessing.cpu_count()) as workers:
     with tqdm(total=len(train_ids), ncols=80) as pbar:
-        for feature, label in workers.imap_unordered(generate_onion_ecif_feature, train_ids):
+        for feature, label in workers.imap_unordered(generate_shell_ecif_feature, train_ids):
             if feature is None or label is None:
                 print(f'catch {feature}, {label}')
                 continue

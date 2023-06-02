@@ -12,13 +12,13 @@ with open(model_file, 'rb') as f:
 SHELLS = 23
 FEATURE_LEN = 1540
 
-def cut_onion(features, num=SHELLS):
+def cut_shell(features, num=SHELLS):
     # reshape shells from SHELLS to num
     return features.reshape(-1, SHELLS, FEATURE_LEN)[:, :num, :].reshape(-1, num*FEATURE_LEN)
 
 shells_num = GBT.n_features_ // FEATURE_LEN
 x_train, y_train, x_test, y_test = get_shell_features()
-x_train, x_test = cut_onion(x_train, shells_num), cut_onion(x_test, shells_num)
+x_train, x_test = cut_shell(x_train, shells_num), cut_shell(x_test, shells_num)
 
 y_pred_GBT = GBT.predict(x_test)
 
